@@ -258,7 +258,7 @@
             Flow-based policies have shown strong potential on challenging continuous-control tasks, including robot manipulation, due to their ability to represent rich, multimodal action distributions. However, training these policies with off-policy reinforcement learning is notoriously unstable.
           </p>
           <p>
-            Our key insight is to treat the flow-based policy as a <strong>sequential model</strong>. We show that the Euler integration used to generate actions in the flow-based policy is algebraically identical to the recurrent computation of a residual RNN. This observation explains the instability observed with off-policy training: the same vanishing or exploding gradients known to affect RNNs also afflict the flow rollout.
+            Our key insight is to treat the flow-based policy as a <strong>sequential model</strong>. We show that the Euler integration used to generate actions in the flow-based policy is algebraically identical to the recurrent computation of a residual RNN, shown in (a). This observation explains the instability observed with off-policy training: the same vanishing or exploding gradients known to affect RNNs also afflict the flow rollout.
           </p>
         </div>
       </div>
@@ -271,7 +271,7 @@
         <p class="has-text-centered"><strong>Velocity network parameterizations.</strong> (a) Standard flow as RNN (b) Flow-G with GRU-style gating (c) Flow-T with Transformer decoder</p>
             <div class="content has-text-justified" style="margin-top: 1.5rem;">
         <p>
-            Introducing a gate network leads to Flow-G in (a) and improves gradient stability. Replacing the velocity with the normalized residual block in (b) yields Flow-T. This architecture provides well-conditioned depth and, crucially, aggregates context with the well-established Transformer architectures. These parameterizations serve as drop-in replacements for velocity in flow policy without altering the surrounding algorithm. As a result, they enable direct and stable off-policy training with methods such as SAC, remove the need for auxiliary distillation actors and surrogate objectives, and keep flow rollout efficient at test time.
+            Introducing a gate network leads to Flow-G in (b) and improves gradient stability. Replacing the velocity with the normalized residual block in (v) yields Flow-T. This architecture provides well-conditioned depth and, crucially, aggregates context with the well-established Transformer architectures. These parameterizations serve as drop-in replacements for velocity in flow policy without altering the surrounding algorithm. As a result, they enable direct and stable off-policy training with methods such as SAC, remove the need for auxiliary distillation actors and surrogate objectives, and keep flow rollout efficient at test time.
         </p>
       </div>
     </div>
@@ -293,7 +293,7 @@
       <div class="columns is-centered">
         <div class="column">
           <img src="static/images/from_scratch_results.png" alt="From-scratch training results" style="width: 100%; height: auto;">
-          <p class="has-text-centered"><strong>From-scratch training performance</strong> on MuJoCo tasks. Our methods achieve state-of-the-art performance across all environments.</p>
+          <p class="has-text-centered"><strong>From-scratch training performance</strong> on MuJoCo tasks. Our methods achieve state-of-the-art performance across all environments. Meanwhile, in the sparse reward environment, all methods fail, where the offline-to-online training is essential.</p>
         </div>
       </div>
     </div>
