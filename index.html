@@ -269,6 +269,10 @@
       <div class="column">
         <img src="static/images/method_architectures.png" alt="Flow-based Policy Architectures" style="width: 100%; height: auto;">
         <p class="has-text-centered"><strong>Velocity network parameterizations.</strong> (a) Standard flow as RNN (b) Flow-G with GRU-style gating (c) Flow-T with Transformer decoder</p>
+            <div class="content has-text-justified" style="margin-top: 1.5rem;">
+        <p>
+            Introducing a gate network leads to Flow-G in (a) and improves gradient stability. Replacing the velocity with the normalized residual block in (b) yields Flow-T. This architecture provides well-conditioned depth and, crucially, aggregates context with the well-established Transformer architectures. These parameterizations serve as drop-in replacements for velocity in flow policy without altering the surrounding algorithm. As a result, they enable direct and stable off-policy training with methods such as SAC, remove the need for auxiliary distillation actors and surrogate objectives, and keep flow rollout efficient at test time.
+        </p>
       </div>
     </div>
   </div>
